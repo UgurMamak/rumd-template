@@ -1,20 +1,25 @@
 import './style/index.scss';
 
-interface IButton {
+export interface IButton {
   text?: string;
   disabled?: boolean;
   readonly?: boolean;
   className?: string;
   children?: React.ReactNode;
+  //onClick: () => {};
 }
 
 const Button = (props: IButton): JSX.Element => {
+  const {
+    className, text, children
+  } = props;
   return (
     <button
       disabled={props.disabled}
-      className={`rumd-button ${props.className}`}
+      className={`rumd-button ${className ? className : ''}`}
     >
-      {props.children}
+      {text ? text : ''}
+      {children ? children : ''}
     </button>
   );
 };
