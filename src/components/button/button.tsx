@@ -1,3 +1,4 @@
+import '../../assets/theme/theme.scss';
 import './style/index.scss';
 
 export interface IButton {
@@ -6,7 +7,7 @@ export interface IButton {
   readonly?: boolean;
   className?: string;
   children?: React.ReactNode;
-  //onClick: () => {};
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = (props: IButton): JSX.Element => {
@@ -15,6 +16,7 @@ const Button = (props: IButton): JSX.Element => {
   } = props;
   return (
     <button
+      onClick={props.onClick}
       disabled={props.disabled}
       className={`rumd-button ${className ? className : ''}`}
     >

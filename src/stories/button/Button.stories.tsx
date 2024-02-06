@@ -11,10 +11,16 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 export const Primary: Story = (args, config) => {
-  console.log(config);
+  console.log('config=', config);
+
+  const clickEvent = (event:React.MouseEvent<HTMLElement>) => {
+    console.log('clickEvent', event);
+  };
+
   return (
     <div>
-      <Button text={args.text}></Button>
+      <Button onClick={(e)=>clickEvent(e)} text={args.text}></Button>
+      <Button onClick={args.onClick} text={args.text}></Button>
     </div>
   );
 };
@@ -24,7 +30,8 @@ Primary.argTypes = {
     control: {
       type: 'text'
     }
-  }
+  },
+  onClick: { action: 'clicked' }
 };
 
 Primary.args = {
